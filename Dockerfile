@@ -62,9 +62,9 @@ WORKDIR /camunda
 USER camunda
 RUN echo $PATH
 RUN id
-RUN ls -tlr /camunda
+RUN ls -tlr
 
-ENTRYPOINT ["/sbin/tini", "--"]
+#ENTRYPOINT ["/sbin/tini", "--"]
 #CMD ["./camunda.sh"]
 
 COPY --chown=camunda:camunda --from=builder /camunda .
