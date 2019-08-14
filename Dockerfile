@@ -63,9 +63,10 @@ USER camunda
 RUN echo $PATH
 RUN id
 RUN ls -tlr
-
+COPY --chown=camunda:camunda --from=builder /camunda .
+ENTRYPOINT ["/bin/bash", "-h"]
 #ENTRYPOINT ["/sbin/tini", "--"]
 #CMD ["./camunda.sh"]
 
-COPY --chown=camunda:camunda --from=builder /camunda .
-CMD ["/bin/bash"]
+#COPY --chown=camunda:camunda --from=builder /camunda .
+#CMD ["/bin/bash"]
