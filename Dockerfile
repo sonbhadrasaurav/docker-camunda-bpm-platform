@@ -61,7 +61,7 @@ RUN chmod -R 777 /camunda
 WORKDIR /camunda
 USER camunda
 RUN echo $PATH
-RUN uid
+RUN id
 RUN ls -tlr /camunda
 
 ENTRYPOINT ["/sbin/tini", "--"]
