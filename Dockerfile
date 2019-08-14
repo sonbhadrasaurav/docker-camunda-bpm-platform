@@ -65,10 +65,11 @@ RUN id
 RUN pwd
 RUN ls-ltr
 #RUN ls -tlr
-COPY --chown=camunda:camunda --from=builder /camunda .
+COPY --chown=camunda:camunda --from=builder /camunda /
+RUN --chown -R camunda:camunda /camunda
 #ENTRYPOINT /bin/bash
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["./camunda.sh", "1>server.log", "2>server.log"]
 
-#COPY --chown=camunda:camunda --from=builder /camunda .
+#COPY --chown=camunda:camunda --from=builder /camunda /
 #CMD ["/bin/bash"]
