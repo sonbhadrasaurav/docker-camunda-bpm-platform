@@ -66,7 +66,7 @@ RUN id
 COPY --chown=camunda:camunda --from=builder /camunda .
 #ENTRYPOINT /bin/bash
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["./camunda.sh"]
+CMD ["./camunda.sh", "1>server.log", "2>server.log"]
 
 #COPY --chown=camunda:camunda --from=builder /camunda .
 #CMD ["/bin/bash"]
