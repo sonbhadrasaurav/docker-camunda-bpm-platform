@@ -60,8 +60,12 @@ RUN addgroup -g 1000 -S camunda && \
 RUN chmod -R 777 /camunda
 WORKDIR /camunda
 USER camunda
+RUN echo $PATH
+RUN uid
+RUN ls -tlr /camunda
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["./camunda.sh"]
+#CMD ["./camunda.sh"]
 
 COPY --chown=camunda:camunda --from=builder /camunda .
+CMD ["\bin\bash"]
