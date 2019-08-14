@@ -68,4 +68,4 @@ RUN ls -tlr
 #CMD ["./camunda.sh"]
 
 COPY --chown=camunda:camunda --from=builder /camunda .
-CMD ["\bin\bash"]
+CMD ["/bin/bash"]
