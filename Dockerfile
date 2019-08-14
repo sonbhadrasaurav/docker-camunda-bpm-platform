@@ -57,7 +57,7 @@ RUN apk add --no-cache \
 
 RUN addgroup -g 1000 -S camunda && \
     adduser -u 1000 -S camunda -G camunda -h /camunda -s /bin/bash -D camunda
-RUN CHMOD -R 777 /camunda
+RUN chmod -R 777 /camunda
 WORKDIR /camunda
 USER camunda
 
