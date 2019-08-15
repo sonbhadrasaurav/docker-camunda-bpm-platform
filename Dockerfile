@@ -59,13 +59,16 @@ RUN addgroup -g 1000 -S camunda && \
     adduser -u 1000 -S camunda -G camunda -h /camunda -s /bin/bash -D camunda
 #RUN chmod -R 777 /camunda
 WORKDIR /camunda
-USER root
+USER camunda
 RUN echo $PATH
 RUN id
 RUN pwd
 RUN ls -ltr
 #RUN ls -tlr
-COPY --chown=camunda:camunda --from=builder /camunda /
+COPY --from=builder /camunda /camunda
+
+RUN ls -ltr
+
 RUN chown -R camunda:camunda /camunda
 #ENTRYPOINT /bin/bash
 ENTRYPOINT ["/sbin/tini", "--"]
