@@ -59,7 +59,7 @@ RUN addgroup -g 1000 -S camunda && \
     adduser -u 1000 -S camunda -G camunda -h /camunda -s /bin/bash -D camunda
 #RUN chmod -R 777 /camunda
 WORKDIR /camunda
-USER camunda
+USER root
 RUN echo $PATH
 RUN id
 RUN pwd
@@ -71,6 +71,7 @@ RUN ls -ltr
 
 RUN chown -R camunda:camunda /camunda
 #ENTRYPOINT /bin/bash
+USER camunda
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/camunda/camunda.sh", "1>server.log", "2>server.log"]
 RUN ls -ltr
