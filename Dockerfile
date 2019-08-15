@@ -63,11 +63,11 @@ USER root
 RUN echo $PATH
 RUN id
 RUN pwd
-RUN ls -ltr
+RUN ls -ltR
 #RUN ls -tlr
 COPY --from=builder /camunda /camunda
 
-RUN ls -ltr
+RUN ls -ltR
 
 RUN chown -R camunda:camunda /camunda
 #ENTRYPOINT /bin/bash
@@ -75,7 +75,7 @@ USER camunda
 RUN id
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/camunda/camunda.sh", "1>server.log", "2>server.log"]
-RUN ls -ltr
+RUN ls -ltR
 
 #COPY --chown=camunda:camunda --from=builder /camunda /
 #CMD ["/bin/bash"]
