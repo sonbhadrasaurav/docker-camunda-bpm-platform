@@ -72,6 +72,7 @@ RUN ls -ltr
 RUN chown -R camunda:camunda /camunda
 #ENTRYPOINT /bin/bash
 USER camunda
+RUN id
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/camunda/camunda.sh", "1>server.log", "2>server.log"]
 RUN ls -ltr
