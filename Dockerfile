@@ -70,6 +70,7 @@ COPY --from=builder /camunda /camunda
 RUN ls -ltR
 
 RUN chown -R camunda:camunda /camunda
+RUN chmod -R 777 /camunda
 #ENTRYPOINT /bin/bash
 USER camunda
 RUN id
